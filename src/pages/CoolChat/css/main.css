@@ -1,0 +1,249 @@
+html {
+	font-size: 12px;
+	box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	background: #111;
+	margin: 0;
+	overflow: hidden;
+	font-family: sans-serif;
+}
+
+a {
+	outline: none;
+}
+
+#crt:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 8px;
+    z-index: 2;
+    pointer-events: none;
+    animation: fadeIn 2s;
+}
+
+/* scanline */
+.scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 8;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(255, 255, 255, 0.2) 10%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+    opacity: 0.1;
+    position: absolute;
+    bottom: 100%;
+    animation: scanline 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scanline {
+    0% {
+        bottom: 100%;
+    }
+    80% {
+        bottom: 100%;
+    }
+    100% {
+        bottom: 0%;
+    }
+}
+
+/*cool VT323 font*/
+@import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
+
+.terminal {
+    font-family: "VT323", monospace;
+    text-transform: uppercase;
+}
+
+/* blinking cursor */
+#input {
+    position: relative;
+    caret-color: transparent;
+    white-space: pre-wrap;
+    background: transparent;
+    border: none;
+    font-family: "VT323", monospace;
+    /* color: #fff; */
+    color: var(--color);
+    outline: none;
+    font-size: max(
+        1rem,
+        2.2vmin
+    );
+    /* width: 10px; */
+    /* min-width: 10px; */
+}
+
+/* Puts a blinking square after the content as replacement for caret */
+#input:after {
+    content: "■";
+    animation: cursor 1s infinite;
+    animation-timing-function: step-end;
+    margin-left: 1px;
+    line-height: 1rem;
+}
+
+#input:after {
+    content: "■";
+    animation: cursor 1s infinite;
+    animation-timing-function: step-end;
+    margin-left: 1px;
+    line-height: 1rem;
+}
+/* Inserts the > before terminal input */
+#input:before {
+    content: var(--term);
+    /* position: absolute;
+    padding-left: 1.5rem;
+    left: 0; */
+}
+
+/* screen */
+#monitor {
+    /* margin: 3vmin auto;
+    padding: 5.5vmin;
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center; */
+    background: #3f3933;
+    border-radius: 0.5rem;
+    box-shadow: 0.6px 90px 110px -60px var(--bg);
+}
+
+#screen {
+    position: relative;
+    border: 3px solid transparent;
+    overflow: hidden;
+}
+
+#crt, pre {
+    font-family: "VT323", monospace;
+}
+
+#crt {
+    min-width: 80ch;
+    height: calc(80ch * 0.8);
+    font-size: max(
+        1rem,
+        2.2vmin
+    );
+    position: relative;
+    background: var(--bg);
+    background-image: radial-gradient(
+        ellipse,
+        var(--bg) 0%,
+        var(--off) 90%
+    );
+}
+
+#crt:after {
+    content: " ";
+    opacity: 0;
+    background: #fff;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+body.fullscreen #crt {
+    font-size: 2.5rem;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+
+.fullscreen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.terminal {
+	position: relative;
+	height: 100%;
+	padding: 2rem;
+	overflow-y: auto;
+	overflow-x: hidden;
+	word-break: break-word;
+	text-transform: uppercase;
+	animation: textShadow 4s infinite;
+}
+
+.terminal,
+.fullscreen {
+	color: var(--color);
+	text-shadow: 0 0 5px #c8c8c8;
+}
+
+/* input / output */
+#prompt {
+    display: none;
+}
+
+#input {
+    caret-color: transparent;
+    outline: none;
+}
+
+#hiddeninput {
+    background: transparent;
+    border: none;
+    font-family: "VT323", monospace;
+    /* color: #fff; */
+    color: transparent;
+    outline: none;
+}
+
+#hiddeninput:hover {
+    cursor: none;
+}
+
+
+.from-me::before {
+    content: ">> ";
+}
+
+.from-someone::before {
+    content: "<< ";
+}
+
+#transcript p {
+    padding: 0;
+    margin: 0;
+}

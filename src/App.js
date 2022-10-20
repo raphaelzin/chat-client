@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable no-unused-vars */
+import "./App.css";
+// import ChatMessagesView from "./components/ChatMessagesView";
+// import UserTextInput from "./components/UserTextInput";
+import ChatManager from "./core/ChatManager";
+import UserManager from "./core/UserManager";
+import CoolChat from "./pages/CoolChat/CoolChat";
+import Chat from "./pages/chat";
+import Login from "./pages/login";
+
+var userManager = new UserManager();
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/register",
+    element: <Login userManager={userManager} />,
+  },
+  {
+    path: "/cool-chat/ws",
+    element: <CoolChat userManager={userManager} />,
+  },
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

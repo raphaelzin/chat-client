@@ -1,0 +1,40 @@
+:root {
+    --green-color: #5bf870;
+    --green-bg: #05321e;
+    --red-color: #c0100a;
+    --red-bg: #1b0302;
+    --blue-color: #a5a5ff;
+    --blue-bg: #4242e7;
+    --orange-bg: #282828;
+    --orange-color: #FFBB00;
+    --off: #050505;
+    --dark: #111;
+    --term: "> ";
+    height: 100%;
+}
+
+/* Red theme */
+.theme-red {
+    --color: var(--red-color);
+    --bg: var(--red-bg);
+    --term: "$ ";
+}
+
+.theme-red .char {
+    animation: type -.5s linear 0s 1;
+}
+
+
+/* Green theme */
+.theme-green {
+    --color: var(--green-color);
+    --bg: var(--green-bg);
+    height: 100%;
+}
+
+/* Orange thenme */
+.theme-orange {
+    --color: var(--orange-color);
+    --bg: var(--orange-bg);
+    --term: "> ";
+}
