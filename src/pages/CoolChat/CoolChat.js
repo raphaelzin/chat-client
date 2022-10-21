@@ -2,9 +2,8 @@ import "./css/animations.css";
 import "./css/themes.css";
 import "./css/main.css";
 import React from "react";
-// import { ContentEditable } from "react";
 import ChatManager from "../../core/ChatManager";
-import CoolMessageView from "./CoolChatMessage";
+import CoolMessageView from "../../components/CoolChatMessage";
 
 class CoolChat extends React.Component {
   constructor(props) {

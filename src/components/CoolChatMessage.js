@@ -1,6 +1,6 @@
-import "./css/animations.css";
-import "./css/themes.css";
-import "./css/main.css";
+import "../pages/CoolChat/css/animations.css";
+import "../pages/CoolChat/css/themes.css";
+import "../pages/CoolChat/css/main.css";
 
 const CoolMessageView = (props) => {
   var tsClass = props.message.isOutgoing ? "from-me" : "from-someone";
