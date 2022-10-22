@@ -13,7 +13,7 @@ class UserManager {
   }
 
   async register(username) {
-    const response = await fetch("http://127.0.0.1:4000/user/register", {
+    const response = await fetch("http://localhost:4000/user/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
