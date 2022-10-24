@@ -1,3 +1,5 @@
+import process from "process";
+
 class UserManager {
   constructor() {
     if (document.cookie) {
@@ -13,13 +15,16 @@ class UserManager {
   }
 
   async register(username) {
-    const response = await fetch("http://localhost:4000/user/register", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ username: username }),
-    });
+    const response = await fetch(
+      "http://" + process.env.REACT_APP_BASE_URL + "/user/register",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ username: username }),
+      }
+    );
     const data = await response.json();
     if (data["token"]) {
       this.token = data["token"];

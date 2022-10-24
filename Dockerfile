@@ -1,5 +1,5 @@
 # build environment
-FROM arm32v7/node:19.0-alpine as build
+FROM node:19.0-alpine as build
 
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH

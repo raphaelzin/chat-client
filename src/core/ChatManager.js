@@ -1,9 +1,12 @@
 import Message from "../models/Message";
 import InfoMessage from "../models/InfoMessage";
+import process from "process";
 
 class ChatManager {
   constructor(userManager) {
-    this.ws = new WebSocket("ws://localhost:4000/chat/ws");
+    this.ws = new WebSocket(
+      "ws://" + process.env.REACT_APP_BASE_URL + "/chat/ws"
+    );
     this.userManager = userManager;
   }
 
